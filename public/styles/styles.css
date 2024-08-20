@@ -25,17 +25,23 @@ form {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: inline-block;
+    display: flex;
+    flex-direction: column; /* Ensure elements stack vertically */
+    align-items: center;    /* Center elements horizontally */
     padding: 20px;
-    margin-bottom: 20px; /* Space between form and Pokémon card */
+    margin-bottom: 20px;
 }
 
+/* Input Field */
 input[type="text"] {
     border: 2px solid #ffcb05;
     border-radius: 5px;
     padding: 10px;
     font-size: 1em;
-    width: 200px;
+    width: 100%; 
+    max-width: 300px; 
+    box-sizing: border-box; 
+    margin-bottom: 10px; 
 }
 
 input[type="submit"] {
@@ -99,16 +105,25 @@ button {
     transition: background-color 0.3s ease;
 }
 
-/* Specific Styles for the Search Button */
+/* Search Button */
 .searchbtn {
     background-color: #ed0606; /* Pokémon red */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 12px 24px; 
+    transition: background-color 0.3s ease;
+    width: 100%; 
+    max-width: 300px; 
+    box-sizing: border-box; 
 }
 
 .searchbtn:hover {
-    background-color: #ffb300; /* Darker yellow for hover effect */
+    background-color: #ffb300; /* Darker red for hover effect */
 }
 
-/* Optional: Add some focus styles */
 .searchbtn:focus {
     outline: 2px solid #ffb300; /* Focus outline for better accessibility */
     outline-offset: 2px;
