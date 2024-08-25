@@ -1,108 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/styles.css">
     <title>Pokémon Info</title>
 </head>
-
 <body>
     <div class="container">
         <h1>Pokémon Information</h1>
-
-        <!-- Dark mode toggle -->
-        <label class="switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider"></span>
-        </label>
-
+        
         <!-- Input field for Pokémon name -->
         <form action="/" method="POST">
             <input type="text" name="pokemonName" placeholder="Enter Pokémon name" required>
             <button class="searchbtn" type="submit">Search</button>
         </form>
-
-        <!-- Random Pokémon button -->
-        <button class="randombtn" id="randomPokemonBtn">Get Random Pokémon</button>
-
-
-        <!-- Display loading indicator -->
-        <div id="loading" style="display: none;">
-            <p>Loading...</p>
-        </div>
-
+        
         <!-- Display error message -->
         <% if (error) { %>
-            <p style="color: red;">
-                <%= error %>
-            </p>
-            <% } %>
+            <p style="color: red;"><%= error %></p>
+        <% } %>
 
-                <!-- Display Pokémon information -->
-                <div id="pokemonInfo">
-                    <% if (pokemon) { %>
-                        <div class="pokemon-card">
-                            <img src="<%= pokemon.sprites.front_default %>" alt="Pokémon Image">
-                            <h2>
-                                <%= pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) %>
-                            </h2>
-                            <p>Height: <%= pokemon.height / 10 %> m</p>
-                            <p>Weight: <%= pokemon.weight / 10 %> kg</p>
-                            <p>Type: <%= pokemon.types.map(type=> type.type.name.charAt(0).toUpperCase() +
-                                    type.type.name.slice(1)).join(', ') %></p>
-                        </div>
-                        <% } %>
-                </div>
+        <!-- Display Pokémon information -->
+        <% if (pokemon) { %>
+            <div class="pokemon-card">
+                <img src="<%= pokemon.sprites.front_default %>" alt="Pokémon Image">
+                <h2><%= pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) %></h2>
+                <p>Height: <%= pokemon.height / 10 %> m</p>
+                <p>Weight: <%= pokemon.weight / 10 %> kg</p>
+                <p>Type: <%= pokemon.types.map(type => type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)).join(', ') %></p>
+            </div>
+        <% } %>
     </div>
-
-    <!-- JavaScript for loading indicator, input validation, and dark mode -->
-    <script>
-
-        document.getElementById("randomPokemonBtn").addEventListener("click", function () {
-            fetch("/random")
-                .then(response => response.text())
-                .then(html => {
-                    // Replace the current content with the new Pokémon data
-                    document.querySelector(".container").innerHTML = html;
-                })
-                .catch(error => console.error("Error fetching random Pokémon:", error));
-        });
-        document.querySelector("form").addEventListener("submit", function (event) {
-            const input = document.querySelector("input[name='pokemonName']").value.trim();
-            if (input === "") {
-                event.preventDefault(); // Prevent form submission
-                alert("Please enter a Pokémon name.");
-            } else if (!/^[a-zA-Z]+$/.test(input)) {
-                event.preventDefault();
-                alert("Invalid characters. Please enter a valid Pokémon name using only letters.");
-            } else {
-                document.getElementById("loading").style.display = "block";
-                document.getElementById("pokemonInfo").style.display = "none";
-            }
-        });
-
-        // Dark Mode Toggle Functionality
-        const darkModeToggle = document.getElementById("darkModeToggle");
-        const body = document.body;
-
-        darkModeToggle.addEventListener("change", function () {
-            if (this.checked) {
-                body.classList.add("dark-mode");
-                localStorage.setItem("dark-mode", "enabled");
-            } else {
-                body.classList.remove("dark-mode");
-                localStorage.setItem("dark-mode", "disabled");
-            }
-        });
-
-        // Check if dark mode was previously enabled
-        if (localStorage.getItem("dark-mode") === "enabled") {
-            darkModeToggle.checked = true;
-            body.classList.add("dark-mode");
-        }
-    </script>
 </body>
-
 </html>
