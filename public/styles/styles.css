@@ -11,6 +11,23 @@ body {
     color: #333;
     text-align: center;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    box-sizing: border-box;
+}
+
+/* Main Container */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto; /* Center container */
 }
 
 /* Header */
@@ -26,10 +43,12 @@ form {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column; /* Ensure elements stack vertically */
-    align-items: center;    /* Center elements horizontally */
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     margin-bottom: 20px;
+    max-width: 100%;
+    width: 100%;
 }
 
 /* Input Field */
@@ -38,10 +57,10 @@ input[type="text"] {
     border-radius: 5px;
     padding: 10px;
     font-size: 1em;
-    width: 100%; 
-    max-width: 300px; 
-    box-sizing: border-box; 
-    margin-bottom: 10px; 
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
 input[type="submit"] {
@@ -63,11 +82,11 @@ input[type="submit"]:hover {
     background-color: #e00def;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: block; /* Make sure it’s a block element to stack vertically */
+    display: block;
     padding: 20px;
     text-align: center;
     max-width: 300px;
-    margin: 0 auto; /* Center the card horizontally */
+    margin: 0 auto;
     animation: fadeIn 1s ease-out;
 }
 
@@ -134,11 +153,11 @@ button {
 
 .searchbtn:hover {
     background-color: #ffb300;
-    transform: scale(1.05); /* Enlarge the button slightly on hover */
+    transform: scale(1.05);
 }
 
 .searchbtn:focus {
-    outline: 2px solid #ffb300; /* Focus outline for better accessibility */
+    outline: 2px solid #ffb300;
     outline-offset: 2px;
 }
 
@@ -245,45 +264,10 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(26px);
 }
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #333;
-    color: #f5f5f5;
-}
-
-body.dark-mode .pokemon-card {
-    background-color: #444;
-    color: #f5f5f5;
-}
-
-body.dark-mode h1 {
-    color: #ffcb05;
-}
-
-body.dark-mode .searchbtn {
-    background-color: #ffcb05;
-}
-
-body.dark-mode .randombtn {
-    background-color: #ffcb05;
-}
-
-body.dark-mode input[type="text"] {
-    border-color: #ffcb05;
-}
-
-body.dark-mode input[type="submit"] {
-    background-color: #ffcb05;
-}
-
-body.dark-mode p {
-    color: #f5f5f5;
-}
-
 
 /* Random Pokémon Button */
 .randombtn {
-    background-color: #4caf50; /* Green for the button */
+    background-color: #4caf50;
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -291,19 +275,18 @@ body.dark-mode p {
     font-size: 1em;
     padding: 12px 24px;
     transition: background-color 0.3s ease;
-    width: 100%; 
+    width: 100%;
     max-width: 300px;
     box-sizing: border-box;
-    margin: 10px auto; /* Center the button */
+    margin: 10px auto;
 }
 
 .randombtn:hover {
-    background-color: #45a049; /* Darker green for hover effect */
+    background-color: #ffb300;
+    transform: scale(1.05);
 }
 
 .randombtn:focus {
-    outline: 2px solid #45a049; /* Focus outline for better accessibility */
+    outline: 2px solid #ffb300;
     outline-offset: 2px;
 }
-
-
